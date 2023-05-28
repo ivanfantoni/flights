@@ -374,7 +374,7 @@ def _check_expiring_plan():
     '''
     try:
         for plan in reqs[2:]:
-            if _check_date(plan['origin_date']):
+            if _check_date([plan['origin_date'], plan['departure_date']]):
                 pass
             else:
                 _delete_plan_expired(plan=plan)
@@ -469,11 +469,10 @@ def _split_dates(dates: list):
     Splits the list of dates and returns them in "date" format.
     '''
     splits = []
-    for date in [dates]:
+    for date in dates:
         y, m, d = date.split('-')
         split = datetime.date(int(y), int(m), int(d))
         splits.append(split)
-
     return splits
 
 
@@ -484,6 +483,7 @@ def _check_date(dates: list):
     '''
     today = datetime.date.today()
     dt = _split_dates(dates)
+    print(dates)
     checked_dates = ['', '']
     if dt[0] < today:
         result = False

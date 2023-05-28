@@ -1,0 +1,79 @@
+[
+    {
+        "mail_config": {
+            "pop_server": "pop.gmail.com",
+            "server": "smtp.gmail.com",
+            "port": "587",
+            "user_name": "Raspberry Pi Ivan",
+            "user": "rpi.ivan@gmail.com",
+            "password": "qdqxefpswrwgehrk",
+            "mailto": [
+                "ivan.fantoni@gmail.com",
+                "ivan.fantoni@telmotor.it",
+                "simona.ceresoli79@gmail.com",
+                "connect@partners.skyscanner.net"
+            ]
+        }
+    },
+    {
+        "generic_treshold": "40.00",
+        "origin": "BGY",
+        "unique_number": 120
+    },
+    {
+        "id": 108,
+        "user": "ivan.fantoni@gmail.com",
+        "origin": "BGY",
+        "treshold": "70",
+        "origin_date": "2023-09-09",
+        "departure_date": "2023-09-13"
+    },
+    {
+        "id": 109,
+        "user": "ivan.fantoni@gmail.com",
+        "origin": "BGY",
+        "treshold": "70",
+        "origin_date": "2023-09-13",
+        "departure_date": "2023-09-17"
+    },
+    {
+        "id": 114,
+        "user": "thomas.castelli@telmotor.it",
+        "origin": "BGY",
+        "treshold": "150",
+        "origin_date": "2023-07-23",
+        "departure_date": "2023-07-30"
+    },
+    {
+        "id": 115,
+        "user": "thomas.castelli@telmotor.it",
+        "origin": "BGY",
+        "treshold": "100",
+        "origin_date": "2023-08-6",
+        "departure_date": "2023-08-13"
+    },
+    {
+        "id": 116,
+        "user": "thomas.castelli@telmotor.it",
+        "origin": "BGY",
+        "treshold": "100",
+        "origin_date": "2023-09-17",
+        "departure_date": "2023-09-24"
+    },
+    {
+        "id": 118,
+        "user": "thomas.castelli@telmotor.it",
+        "origin": "BGY",
+        "treshold": "50",
+        "origin_date": "2023-06-16",
+        "departure_date": "2023-06-18"
+    },
+    {
+        "id": 119,
+        "user": "thomas.castelli@telmotor.it",
+        "origin": "BGY",
+        "treshold": "200",
+        "origin_date": "2023-07-23",
+        "departure_date": "2023-07-30"
+    }
+]
