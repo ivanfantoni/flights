@@ -301,15 +301,15 @@ def holiday_subscription(mailtext, user):
     if _check_params(list=list): 
         params = [item.replace(' ', '')[:10] if len(item) > 10 else item.replace(' ', '') for item in list][:4]
         if _check_iata(params[0]):
-            d =  _check_date([params[2], params[3]])
-            if d[0]:
+            od, dd =  _check_date([params[2], params[3]])
+            if od:
                 holiday_config = {
                 "id": reqs[1]['unique_number'],
                 "user": user,
                 "origin": params[0].upper(),
                 "treshold": params[1],
-                "origin_date": params[2],
-                "departure_date": params[3],
+                "origin_date": od,
+                "departure_date": dd,
                 }
                 reqs[1]['unique_number'] = int(reqs[1]['unique_number']) +1 
                 reqs.append(holiday_config)
@@ -479,8 +479,7 @@ def _split_dates(dates: list):
 
 
 def _zero_nine(number):
-
-    if int(number) < 10:
+    if int(number) < 10 and len(number) == 1:
         number = f'0{number}'
     return number
 
