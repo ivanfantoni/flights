@@ -469,7 +469,7 @@ def _split_dates(dates: list):
     Splits the list of dates and returns them in "date" format.
     '''
     splits = []
-    for date in dates:
+    for date in [dates]:
         y, m, d = date.split('-')
         split = datetime.date(int(y), int(m), int(d))
         splits.append(split)
