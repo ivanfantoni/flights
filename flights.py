@@ -479,8 +479,15 @@ def _split_dates(dates: list):
 
 
 def _zero_nine(number):
-    if int(number) < 10 and len(number) == 1:
-        number = f'0{number}'
+    y, m, d = number.split('-')
+
+    m.replace(' ', '')
+    d.replace(' ', '')
+    if int(m) < 10 and len(m) == 1:
+        m = f'0{m}'
+    if int(d) < 10 and len(d) == 1:
+        d = f'0{d}'
+    number = '-'.join([y, m, d])
     return number
 
 
