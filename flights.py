@@ -301,8 +301,10 @@ def holiday_subscription(mailtext, user):
     if _check_params(list=list): 
         params = [item.replace(' ', '')[:10] if len(item) > 10 else item.replace(' ', '') for item in list][:4]
         if _check_iata(params[0]):
-            od, dd =  _check_date([params[2], params[3]])
-            if od:
+            d =  _check_date([params[2], params[3]])
+            if d[0]:
+                od = _zero_nine(params[2])
+                dd = _zero_nine(params[3])
                 holiday_config = {
                 "id": reqs[1]['unique_number'],
                 "user": user,
@@ -317,7 +319,7 @@ def holiday_subscription(mailtext, user):
                     holiday_sub = json.dump(reqs, w_config, indent=4)
                 _confirm_holiday_plan(holiday_config)
             else:
-                _error_holiday_plan(date=od, user=user)
+                _error_holiday_plan(date=d[1], user=user)
         else:
             _error_iata_code(iata=params[0].upper(), user=user)
     else:
@@ -471,8 +473,6 @@ def _split_dates(dates: list):
     splits = []
     for date in dates:
         y, m, d = date.split('-')
-        m = _zero_nine(m)
-        d = _zero_nine(d)
         split = datetime.date(int(y), int(m), int(d))
         splits.append(split)
     return splits
