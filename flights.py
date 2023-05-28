@@ -471,9 +471,18 @@ def _split_dates(dates: list):
     splits = []
     for date in dates:
         y, m, d = date.split('-')
+        m = _zero_nine(m)
+        d = _zero_nine(d)
         split = datetime.date(int(y), int(m), int(d))
         splits.append(split)
     return splits
+
+
+def _zero_nine(number):
+
+    if int(number) < 10:
+        number = f'0{number}'
+    return number
 
 
 def _check_date(dates: list):
@@ -483,7 +492,6 @@ def _check_date(dates: list):
     '''
     today = datetime.date.today()
     dt = _split_dates(dates)
-    print(dates)
     checked_dates = ['', '']
     if dt[0] < today:
         result = False
