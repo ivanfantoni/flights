@@ -317,7 +317,7 @@ def holiday_subscription(mailtext, user):
                     holiday_sub = json.dump(reqs, w_config, indent=4)
                 _confirm_holiday_plan(holiday_config)
             else:
-                _error_holiday_plan(date=d[1], user=user)
+                _error_holiday_plan(date=od, user=user)
         else:
             _error_iata_code(iata=params[0].upper(), user=user)
     else:
