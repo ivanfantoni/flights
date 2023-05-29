@@ -4,6 +4,7 @@ from calendar import Calendar
 import datetime
 from mail import Email
 import argparse
+import re
 
 
 ryanair = Ryanair('EUR')
@@ -303,15 +304,15 @@ def holiday_subscription(mailtext, user):
         if _check_iata(params[0]):
             d =  _check_date([params[2], params[3]])
             if d[0]:
-                od = _zero_nine(params[2])
-                dd = _zero_nine(params[3])
+                origin_date = _zero_nine(params[2])
+                departure_date = _zero_nine(params[3])
                 holiday_config = {
                 "id": reqs[1]['unique_number'],
                 "user": user,
                 "origin": params[0].upper(),
                 "treshold": params[1],
-                "origin_date": od,
-                "departure_date": dd,
+                "origin_date": origin_date,
+                "departure_date": departure_date,
                 }
                 reqs[1]['unique_number'] = int(reqs[1]['unique_number']) +1 
                 reqs.append(holiday_config)
@@ -483,6 +484,7 @@ def _zero_nine(number):
 
     m.replace(' ', '')
     d.replace(' ', '')
+    d = re.sub(r'\s', '', d)
     if int(m) < 10 and len(m) == 1:
         m = f'0{m}'
     if int(d) < 10 and len(d) == 1:
